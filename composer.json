@@ -23,5 +23,9 @@
     },
     "require-dev" : {
         "satooshi/php-coveralls" : "^1.0"
+    },
+    "scripts": {
+        "test-report": "open ./build/log/index.html",
+        "test": "phpunit && composer test-report"
     }
 }

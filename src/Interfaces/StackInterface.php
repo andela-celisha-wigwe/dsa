@@ -8,7 +8,7 @@ interface StackInterface {
 
 	public function pop();
 
-	public function peek();
+	// public function peek();
 
 	public function isEmpty();
 

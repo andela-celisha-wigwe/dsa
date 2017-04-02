@@ -1,13 +1,13 @@
 <?php 
 
-namespace Elchroy\DSA;
+namespace Elchroy\DSA\Structures;
 
 use Elchroy\DSA\Interfaces\StackInterface;
 
 /**
 * Stack : bottom -> [] <- top
 */
-class ClassName implements StackInterface {
+class Stack implements StackInterface {
 	private $list;
 
 	public function __construct() {
@@ -19,15 +19,17 @@ class ClassName implements StackInterface {
 	}
 
 	public function push($item) {
-		array_push($this->list, $item);
+		if (is_array($item)) {
+			foreach ($item as $i) {
+				array_push($this->list, $i);
+			}
+		} else {
+			array_push($this->list, $item);
+		}
 		return $this;
 	}
 
-	public function peek() {
-
-	}
-
-	public funciton isEmpty() {
+	public function isEmpty() {
 		return $this->size() <= 0;
 	}
 
@@ -35,7 +37,7 @@ class ClassName implements StackInterface {
 		return count($this->list);
 	}
 
-	public function display() {
-		var_dump($this->list);
+	public function getData() {
+		return $this->list;
 	}
 }

@@ -41,15 +41,15 @@ class Graph {
 			$this->putNodeInStack($this->currentNode);
 			$this->currentNode = $this->currentNode->selectRandomNodeFromUnVisitedNodes();
 			// var_dump($this->stack);
-			$this->search();
+			// $this->search();
 		} else {
 			// $this->displayStack();
 		}
 	}
 
 	public function displayStack() {
-		var_dump("THis is the stack");
-		var_dump($this->stack);
+		// var_dump("THis is the stack");
+		// var_dump($this->stack);
 	}
 }
 
@@ -97,7 +97,7 @@ class Node {
 
 	public function selectRandomNodeFromUnVisitedNodes() {
 		// var_dump(array_rand());
-		var_dump(array_keys($this->unVisitedNodes));
+		// var_dump(array_keys($this->unVisitedNodes));
 		// return $this->unVisitedNodes[array_rand(array_keys($this->unVisitedNodes))];
 	}
 
