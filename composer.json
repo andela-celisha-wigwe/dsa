@@ -1,0 +1,27 @@
+{
+    "name" : "elchroy/dsa",
+    "type": "library",
+    "homepage": "https://github.com/andela-celisha-wigwe/dsa",
+    "keywords": ["data","structres", "algorithms", "dsa", "stack"],
+    "description" : "This is a list of implementations of common data structres in computer science., written in PHP.",
+    "license" : "MIT",
+    "authors" : [
+                    {
+                        "name" : "andela-celisha-wigwe",
+                        "email" : "chijioke.elisha-wigwe@andela.com",
+                        "role" : "Software Engineer"
+                    }
+                ],
+    "autoload" : {
+        "psr-4": {
+            "Elchroy\\DSA\\" : "src"
+        }
+    },
+    "minimum-stability": "beta",
+    "require" : {
+        "php" : ">=5.5"
+    },
+    "require-dev" : {
+        "satooshi/php-coveralls" : "^1.0"
+    }
+}
