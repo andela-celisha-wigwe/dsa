@@ -1,8 +1,9 @@
 <?php 
 
 use Elchroy\DSA\Structures\Stack;
+use PHPUnit\Framework\TestCase;
 
-class StackTest extends PHPUnit_Framework_TestCase {
+class StackTest extends TestCase {
 
 	private $stack;
 
@@ -21,8 +22,10 @@ class StackTest extends PHPUnit_Framework_TestCase {
 		$this->stack->push(1);
 		$this->stack->push("s");
 
-		$this->assertEquals([1, "s"], $this->stack->getData());
-		$this->assertNotEquals(["s", 1], $this->stack->getData());
+		$data = $this->stack->getData();
+
+		$this->assertEquals([1, "s"], $data);
+		$this->assertNotEquals(["s", 1], $data);
 		$this->assertNotTrue($this->stack->isEmpty());
 	}
 
@@ -37,18 +40,26 @@ class StackTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(["one"], $this->stack->getData());
 	}
 
-	public function testStackHasTheCorrectCount() {
-		$this->stack->push(2);
-		$this->stack->push(2);
-		$this->stack->push(2);
+	public function testStackCanPeekToTheLastElementWithoutRemovingIt() {
+		$this->stack->push("two");
+		$this->stack->push("one");
 
-		$this->assertEquals(3, $this->stack->size());
+		$last = $this->stack->peek();
+
+		$this->assertEquals("one", $last);
+		$this->assertNotEquals("two", $last);
+		$this->assertEquals(["two", "one"], $this->stack->getData());
+	}
+
+	public function testStackReturnsNullWhenEmpty() {
+		$last = $this->stack->pop();
+		$this->assertEquals(null, $last);
 	}
 
 	public function testStackCanStoreAnArrayOfInputs() {
-		$this->stack->push("first");
-		$this->stack->push([1,2,3,4,5]);
+		// $this->stack->push("first");
+		// $this->stack->pushAll( [1,2,3,4,5] );
 
-		$this->assertEquals(["first",1,2,3,4,5], $this->stack->getData());
+		// $this->assertEquals(["first",1,2,3,4,5], $this->stack->getData());
 	}
 }

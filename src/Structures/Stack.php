@@ -7,37 +7,43 @@ use Elchroy\DSA\Interfaces\StackInterface;
 /**
 * Stack : bottom -> [] <- top
 */
-class Stack implements StackInterface {
-	private $list;
+class Stack {
+	private $storage;
+	private $length;
 
-	public function __construct() {
-		$this->list = [];
+	public function __construct () {
+		$this->storage = [];
+		$this->length = 0;
 	}
 
-	public function pop() {
-		return array_pop($this->list);
-	}
-
-	public function push($item) {
-		if (is_array($item)) {
-			foreach ($item as $i) {
-				array_push($this->list, $i);
-			}
-		} else {
-			array_push($this->list, $item);
+	public function pop () {
+		if ($this->length) {
+			$value = $this->storage[$this->length - 1];
+			unset($this->storage[$this->length - 1]);
+			$this->length--;
+			return $value;
 		}
-		return $this;
+		return null;
 	}
 
-	public function isEmpty() {
-		return $this->size() <= 0;
+	public function peek () {
+		if ($this->length) {
+			$value = $this->storage[$this->length - 1];
+			return $value;
+		}
+		return null;
 	}
 
-	public function size() {
-		return count($this->list);
+	public function push ($value) {
+		$this->storage[$this->length] = $value;
+		$this->length++;
 	}
 
-	public function getData() {
-		return $this->list;
+	public function isEmpty () {
+		return $this->length === 0;
+	}
+
+	public function getData () {
+		return $this->storage;
 	}
 }
